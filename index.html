@@ -3,164 +3,57 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>كروت بينا 💬</title>
-<meta name="description" content="لعبة أسئلة وتحديات بين اتنين، تقرّبكم من بعض وتضحّككم. العبوا على نفس الموبايل أو من مكانين مختلفين.">
+<title>ألعاب بينا 🎲</title>
+<meta name="description" content="أربع ألعاب بسيطة بين اتنين: أسئلة، واختيارات، وتخمين. العبوا على نفس الموبايل أو من مكانين.">
 <meta name="theme-color" content="#3b5bfd">
-<meta property="og:type" content="website">
-<meta property="og:title" content="كروت بينا 💬">
-<meta property="og:description" content="لعبة أسئلة وتحديات بين اتنين، تقرّبكم من بعض وتضحّككم. يلا نلعب!">
-<meta property="og:image" content="https://benacards-two.vercel.app/og.png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta name="twitter:card" content="summary_large_image">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" type="image/png" href="icon-192.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-title" content="كروت بينا">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lalezar&family=Tajawal:wght@500;700&display=swap">
-<link rel="stylesheet" href="css/themes.css">
-<link rel="stylesheet" href="css/style.css">
+<meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="ألعاب بينا">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lalezar&family=Tajawal:wght@500;700&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lalezar&family=Tajawal:wght@500;700&display=swap"></noscript>
+<style>
+:root{--ink:#14143a;--yel:#ffd93d;--pink:#ff6fb1;--grn:#2fd18b;--sky:#6ee7ff}
+*{box-sizing:border-box;margin:0;padding:0}
+[hidden]{display:none!important}
+body{background:radial-gradient(rgba(255,255,255,.14) 2px,transparent 2px) 0 0/26px 26px,#3b5bfd;color:#fff;font-family:Tajawal,system-ui,sans-serif;min-height:100vh;display:flex;justify-content:center;padding:calc(26px + env(safe-area-inset-top,0px)) 14px calc(40px + env(safe-area-inset-bottom,0px))}
+main{width:100%;max-width:420px;text-align:center}
+h1{font:400 38px Lalezar,Tajawal,sans-serif;text-shadow:3px 3px 0 var(--ink)}
+p.t{font-weight:700;margin:6px 0 20px;line-height:1.7}
+.card{display:block;text-decoration:none;color:var(--ink);text-align:start;margin-top:16px;padding:16px 18px;border:4px solid var(--ink);border-radius:24px;box-shadow:6px 6px 0 var(--ink);transition:transform .1s,box-shadow .1s}
+.card:active{transform:translate(5px,5px);box-shadow:1px 1px 0 var(--ink)}
+.card:focus-visible{outline:4px solid #fff;outline-offset:3px}
+.c0{background:var(--yel)}.c1{background:var(--pink)}.c2{background:var(--grn)}.c3{background:var(--sky)}
+.card b{display:block;font:400 28px Lalezar,Tajawal,sans-serif;line-height:1.3}
+.card span{display:block;font-weight:700;font-size:15px;line-height:1.7;margin-top:2px}
+.card i{display:inline-block;margin-top:10px;background:var(--ink);color:#fff;font:700 14px Tajawal,sans-serif;font-style:normal;border-radius:99px;padding:3px 16px}
+.inst{margin-top:22px;font:700 15px Tajawal,sans-serif;background:#fff;color:var(--ink);border:3px solid var(--ink);border-radius:99px;padding:8px 18px;box-shadow:3px 3px 0 var(--ink);cursor:pointer}
+.hint{margin-top:18px;font-weight:700;font-size:13px;line-height:1.8}
+</style>
 </head>
 <body>
-<main id="app">
-  <header class="hero">
-    <h1 data-i18n="title">كروت بينا 💬</h1>
-    <p class="tagline" id="tagline" data-i18n="tagline"></p>
-  </header>
-
-  <!-- players (always visible) -->
-  <div class="players idle" id="players">
-    <div class="pl turn" id="p0"><small data-i18n="p1"></small><div class="pn"><button class="av" id="a0" type="button" data-i18n-aria="avatarAria">👦</button><input id="n0" data-i18n-ph="phName" maxlength="24" data-i18n-aria="p1"></div><span class="pts" id="s0"></span></div>
-    <div class="pl" id="p1"><small data-i18n="p2"></small><div class="pn"><button class="av" id="a1" type="button" data-i18n-aria="avatarAria">👦</button><input id="n1" data-i18n-ph="phName" maxlength="24" data-i18n-aria="p2"></div><span class="pts" id="s1"></span></div>
-  </div>
-
-  <!-- ================= HOME ================= -->
-  <section id="home">
-    <div class="panel"><h3 data-i18n="packsT"></h3><div class="chips" id="packs" role="group"></div><p class="pdesc" id="pdesc"></p></div>
-    <div class="panel"><h3 data-i18n="intensT"></h3><div class="chips" id="intens" role="group"></div></div>
-
-    <details class="cqp" id="cqp">
-      <summary data-i18n="cqSum"></summary>
-      <div class="row"><input id="cqi" maxlength="140" data-i18n-ph="cqPh" data-i18n-aria="cqAria"></div>
-      <div class="row"><select id="cqs" data-i18n-aria="cqLvAria"><option value="0" data-i18n="lv0"></option><option value="1" data-i18n="lv1" selected></option><option value="2" data-i18n="lv2"></option></select><button class="sm" id="cqa" data-i18n="cqAdd"></button></div>
-      <div class="cql" id="cql"></div>
-    </details>
-
-    <div class="startrow"><button class="btn big" id="start" data-i18n="start"></button></div>
-
-    <!-- settings block: lives here before the game, moves into the side drawer once the game starts -->
-    <div id="ctlHome"><div id="ctl">
-      <div class="lobby">
-        <button class="btn alt" id="onl" aria-expanded="false" data-i18n="onl"></button>
-        <div class="lbx" id="lbx">
-          <p data-i18n="roomNote"></p>
-          <div class="row"><input id="myn" maxlength="24" data-i18n-ph="myName" data-i18n-aria="myName"></div>
-          <div id="roomOut">
-            <div class="row"><button class="sm" id="rnew" data-i18n="roomNew"></button></div>
-            <div class="row"><input id="rcode" maxlength="10" dir="ltr" data-i18n-ph="roomCodePh" data-i18n-aria="roomCodePh"><button class="sm" id="rjoin" data-i18n="roomJoin"></button></div>
-          </div>
-          <div id="roomIn" hidden>
-            <div class="st" id="roomst" role="status"></div>
-            <div class="row"><button class="sm" id="rinv" data-i18n="roomInvite"></button><button class="sm" id="rleave" data-i18n="roomLeave"></button></div>
-          </div>
-          <div class="st" id="rmsg" role="status"></div>
-        </div>
-      </div>
-    </div></div>
-  <a class="gm" id="hubh" href="#" hidden style="margin-top:14px">🏠 كل الألعاب</a>
-  </section>
-
-  <!-- ================= GAME ================= -->
-  <section id="gamescr" hidden>
-    <div><span class="lvl" id="lvl"></span></div>
-    <div class="count" id="cnt"></div>
-
-    <section id="game">
-      <div class="stage"><button class="card" id="card" aria-live="polite">
-        <div class="inner">
-          <div class="face front"><div class="big">؟</div><span class="t" id="ft"></span></div>
-          <div class="face back"><span class="tag" id="tg"></span><span class="who" id="wh"></span><div class="q" id="q"></div></div>
-        </div>
-      </button></div>
-      <div class="tmw" id="tmw" hidden><span id="tmn">30</span> ⏱️<div class="tmbar"><i id="tmb"></i></div></div>
-      <div class="ans" id="ans" hidden>
-        <label for="at" id="al"></label>
-        <textarea id="at" maxlength="400" data-i18n-ph="ansPh"></textarea>
-      </div>
-      <div class="btns" style="margin-top:14px"><button class="btn ok" id="dn" hidden></button></div>
-      <div class="btns" style="margin-top:14px" id="tkr" hidden><button class="btn alt" id="tk" hidden></button><button class="btn alt" id="sw" hidden></button></div>
-      <div class="btns"><button class="btn alt" id="sk" disabled></button><button class="btn" id="nx" disabled></button></div>
-      <div class="rxbar" role="group" data-i18n-aria="rxGroup">
-        <button class="rbt" data-e="😂" data-i18n-aria="rx_f">😂</button><button class="rbt" data-e="😮" data-i18n-aria="rx_s">😮</button><button class="rbt" data-e="💖" data-i18n-aria="rx_l">💖</button><button class="rbt" data-e="👏" data-i18n-aria="rx_c">👏</button>
-      </div>
-      <p class="hint" id="hint"></p>
-    </section>
-
-    <section class="end" id="end">
-      <h2 data-i18n="endT"></h2>
-      <p data-i18n="endP"></p>
-      <div class="awards"><h3 data-i18n="awardsT"></h3><div id="awlist"></div></div>
-      <div class="recap" id="recap"></div>
-      <div class="btns"><button class="btn alt" id="cp" data-i18n="copyAns"></button><button class="btn alt" id="memobtn" data-i18n="memoBtn"></button><button class="btn" id="rs" data-i18n="again"></button></div>
-    </section>
-  </section>
+<main>
+  <h1>ألعاب بينا 🎲</h1>
+  <p class="t">اختار لعبتك وابدأ. كلها بين اتنين، على نفس الموبايل أو من مكانين.</p>
+  <div id="games"></div>
+  <button class="inst" id="inst" hidden>📲 ثبّت الصفحة دي</button>
+  <p class="hint" id="ios" hidden>للتثبيت على الآيفون: زرار المشاركة ثم «إضافة إلى الشاشة الرئيسية»</p>
 </main>
-
-<!-- side drawer (settings after the game starts) -->
-<button class="menubtn" id="menu" aria-expanded="false" aria-controls="drawer" hidden></button>
-<div class="scrim" id="scrim" hidden></div>
-<aside class="drawer" id="drawer" hidden>
-  <div class="dhead"><b data-i18n="settings"></b><button class="dx" id="dx" data-i18n-aria="close">✕</button></div>
-  <a class="gm" id="hubl" href="#" hidden>🏠 رجوع لقايمة الألعاب</a>
-  <div id="dbody"></div>
-  <div class="opts">
-    <label class="gm"><input type="checkbox" id="tm" checked> <span data-i18n="timerOpt"></span></label>
-    <button type="button" class="gm" id="snd"></button>
-    <button type="button" class="gm" id="langb"></button>
-    <button type="button" class="gm" id="themeb"></button>
-    <button type="button" class="gm" id="share" data-i18n="share"></button>
-    <button type="button" class="gm" id="inst" hidden data-i18n="inst"></button>
-    <button type="button" class="gm" id="how" data-i18n="how"></button>
-  </div>
-  <p class="hint2" id="ihelp" hidden data-i18n="iosHelp"></p>
-  <button class="btn alt" id="rst" hidden data-i18n="rst"></button>
-</aside>
-
-<!-- how to play -->
-<div class="intro" id="intro" role="dialog" aria-modal="true" aria-labelledby="introT" hidden>
-  <div class="introc">
-    <button class="ix" id="ix" data-i18n-aria="close">✕</button>
-    <h2 id="introT" data-i18n="introT"></h2>
-    <div id="introBody" data-i18n-html="introBody"></div>
-  </div>
-</div>
-
-<!-- memory card -->
-<div class="intro" id="memo" role="dialog" aria-modal="true" hidden>
-  <div class="introc memoc">
-    <button class="ix" id="memox" data-i18n-aria="close">✕</button>
-    <h2 data-i18n="memoT"></h2>
-    <img id="memoimg" alt="">
-    <div class="btns" style="margin-top:6px"><button class="btn ok" id="memosave" data-i18n="memoSave"></button><button class="btn alt" id="memoshare" data-i18n="memoShare"></button></div>
-  </div>
-</div>
-
-<script src="js/data/questions.js"></script>
-<script src="js/data/forfeits.js"></script>
-<script src="js/data/fem.js"></script>
-<script src="js/data/more.js"></script>
-<script src="js/config.js"></script>
-<script src="js/i18n.js"></script>
-<script src="js/util.js"></script>
-<script src="js/audio.js"></script>
-<script src="js/state.js"></script>
-<script src="js/ui.js"></script>
-<script src="js/net.js"></script>
-<script src="js/room.js"></script>
-<script src="js/features.js"></script>
-<script src="js/app.js"></script>
+<script>
+/* The four games. To change a link or a line, edit it here. */
+const GAMES=[
+  {name:'كروت بينا 💬',desc:'أسئلة وتحديات تقرّبكم من بعض وتضحّككم.',url:'https://benacards-two.vercel.app/'},
+  {name:'تفضّل إيه؟ 🤔',desc:'كل واحد يختار بين حاجتين، ونشوف توافقكم.',url:'https://wyr-game-orpin.vercel.app/'},
+  {name:'مين فينا؟ 👀',desc:'مين فينا أكتر واحد؟ الاختيارين يظهروا مع بعض.',url:'https://who-game-seven.vercel.app/'},
+  {name:'خمّن إجابتي 🔮',desc:'واحد بيجاوب والتاني بيخمّن، ونشوف مين عارف التاني أكتر.',url:'https://guess-game-one-rho.vercel.app/'}
+];
+document.getElementById('games').innerHTML=GAMES.map((g,i)=>`<a class="card c${i}" href="${g.url}" rel="noopener"><b>${g.name}</b><span>${g.desc}</span><i>العب ◀</i></a>`).join('');
+/* install */
+let DP=null;const inst=document.getElementById('inst');
+addEventListener('beforeinstallprompt',e=>{e.preventDefault();DP=e;inst.hidden=false});
+inst.addEventListener('click',()=>{if(DP){DP.prompt();DP.userChoice.finally(()=>{DP=null;inst.hidden=true})}});
+if(/iphone|ipad|ipod/i.test(navigator.userAgent||'')&&!navigator.standalone)document.getElementById('ios').hidden=false;
+try{if('serviceWorker' in navigator&&/^https?:/.test(location.protocol))navigator.serviceWorker.register('sw.js').catch(()=>{})}catch(e){}
+</script>
 </body>
 </html>
