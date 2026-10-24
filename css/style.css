@@ -1,0 +1,187 @@
+/* ============ Base ============ */
+:root{
+  --card:#fffdf5; --paper:#ffffff; --ink:#14143a;
+  --pink:#ff6fb1; --yel:#ffd93d; --grn:#2fd18b; --red:#ff6b6b;
+  color-scheme:light;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{min-height:100%}
+[hidden]{display:none!important}
+body{
+  background:var(--bg);
+  background-image:radial-gradient(var(--dots) 2px,transparent 2px);
+  background-size:26px 26px;
+  color:var(--ink);
+  font-family:'Tajawal','Segoe UI',system-ui,sans-serif;
+  display:flex;justify-content:center;padding:18px 14px 40px;
+}
+main{width:100%;max-width:420px;text-align:center}
+main.ingame{padding-top:40px}
+main.ingame .hero h1{font-size:26px}
+h1{font:400 32px 'Lalezar','Tajawal',sans-serif;color:var(--on-bg);text-shadow:3px 3px 0 var(--h1sh)}
+button{font-family:inherit}
+
+/* ============ Buttons & small controls ============ */
+.btn{font:400 20px 'Lalezar','Tajawal',sans-serif;background:var(--yel);color:var(--ink);border:4px solid var(--ink);border-radius:16px;padding:7px 22px;box-shadow:5px 5px 0 var(--ink);cursor:pointer;transition:transform .1s,box-shadow .1s}
+.btn.alt{background:var(--paper);font-size:17px}
+.btn.ok{background:var(--grn)}
+.btn.big{font-size:26px;padding:10px 34px}
+.btn:active{transform:translate(4px,4px);box-shadow:1px 1px 0 var(--ink)}
+.btn:focus-visible{outline:4px solid var(--on-bg);outline-offset:3px}
+.btn[disabled]{opacity:.45;cursor:default}
+.btns{margin-top:24px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.sm{font:700 14px 'Tajawal',sans-serif;border:3px solid var(--ink);border-radius:12px;background:var(--yel);color:var(--ink);padding:6px 12px;cursor:pointer}
+.sm:focus-visible{outline:3px solid var(--pink)}
+.sm[disabled]{opacity:.5;cursor:default}
+.gm{display:inline-flex;align-items:center;gap:6px;background:var(--paper);color:var(--ink);border:3px solid var(--ink);border-radius:99px;padding:3px 12px;font:700 13px 'Tajawal',sans-serif;margin-bottom:12px;cursor:pointer}
+.gm input{width:18px;height:18px;accent-color:var(--pink)}
+.gm:focus-visible{outline:3px solid var(--on-bg);outline-offset:2px}
+.opts{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+.hint2{font-size:13px;font-weight:700;line-height:1.8;margin-top:8px}
+.row{display:flex;gap:6px;margin-top:8px}
+textarea{width:100%;height:78px;margin-top:6px;padding:8px;border:3px solid var(--ink);border-radius:12px;font:12px monospace;direction:ltr;background:var(--paper);color:var(--ink);resize:none}
+textarea:focus-visible{outline:3px solid var(--pink)}
+
+/* ============ Home screen ============ */
+.hero p.tagline{color:var(--on-bg);font-weight:700;font-size:15px;line-height:1.7;margin:6px 0 4px}
+.panel{margin-top:14px;text-align:start}
+.panel h3{font:400 18px 'Lalezar','Tajawal',sans-serif;color:var(--on-bg);margin-bottom:6px;text-align:center}
+.chips{display:flex;flex-wrap:wrap;gap:6px;justify-content:center}
+.chip{font:700 14px 'Tajawal',sans-serif;border:3px solid var(--ink);border-radius:99px;background:var(--paper);color:var(--ink);padding:5px 14px;cursor:pointer}
+.chip.on{background:var(--yel);box-shadow:3px 3px 0 var(--ink)}
+.chip[disabled]{opacity:.5;cursor:default}
+.chip:focus-visible{outline:3px solid var(--on-bg);outline-offset:2px}
+.pdesc{color:var(--on-bg);font-size:13px;font-weight:700;text-align:center;margin-top:6px;min-height:20px}
+.startrow{margin:20px 0 10px;text-align:center}
+.lobby{margin-top:10px}
+.lbx{display:none;margin-top:10px;background:var(--card);border:3px solid var(--ink);border-radius:16px;box-shadow:4px 4px 0 var(--ink);padding:12px;text-align:start}
+.lbx.on{display:block}
+.lbx p{font-size:13px;font-weight:700;line-height:1.8}
+.lbx input{flex:1;min-width:0;padding:8px;border:3px solid var(--ink);border-radius:12px;font:700 16px 'Tajawal',sans-serif;background:var(--paper);color:var(--ink);text-align:center}
+.lbx input:focus-visible{outline:3px solid var(--pink)}
+.st{margin-top:8px;font-size:13px;font-weight:700;line-height:1.7}
+.manual{margin-top:12px;border-top:2px dashed #cfcfe8;padding-top:8px}
+.manual summary{font-weight:700;font-size:13px;cursor:pointer}
+.fbx{margin-top:10px;border-top:2px dashed #cfcfe8;padding-top:8px}
+.fbx p{font-size:13px;font-weight:700;line-height:1.8;color:#a3243b}
+.cqp{margin:12px 0;background:var(--card);border:3px solid var(--ink);border-radius:16px;box-shadow:4px 4px 0 var(--ink);padding:10px 12px;text-align:start}
+.cqp summary{font-weight:700;cursor:pointer}
+.cqp input,.cqp select{flex:1;min-width:0;padding:8px;border:3px solid var(--ink);border-radius:12px;font:700 15px 'Tajawal',sans-serif;background:var(--paper);color:var(--ink)}
+.cqp input:focus-visible,.cqp select:focus-visible{outline:3px solid var(--pink)}
+.cql div{display:flex;justify-content:space-between;gap:8px;align-items:center;font-size:13px;font-weight:700;padding:5px 0;border-bottom:1px dashed #cfcfe8}
+.cql button{border:0;background:none;cursor:pointer;font-size:16px;color:var(--ink)}
+
+/* ============ Players bar ============ */
+.players{display:flex;gap:10px;margin:14px 0 10px}
+.pl{flex:1;border:3px solid var(--ink);border-radius:14px;background:var(--paper);opacity:.6;transition:all .3s;box-shadow:3px 3px 0 var(--ink);padding:6px 8px}
+.players.idle .pl{opacity:1}
+.pl.turn{opacity:1;background:var(--yel);transform:translateY(-3px);box-shadow:5px 5px 0 var(--ink)}
+.pl small{display:block;font-size:11px;font-weight:700}
+.pn{display:flex;align-items:center;gap:6px}
+.pl input{min-width:0;flex:1;width:100%;border:0;background:transparent;text-align:center;font:700 17px 'Tajawal',sans-serif;color:var(--ink);outline:none}
+.pl input:focus-visible{outline:2px solid var(--ink);border-radius:6px}
+.pts{display:block;font-weight:700;font-size:13px;min-height:16px}
+.av{font-size:26px;border:0;background:none;cursor:pointer;line-height:1;padding:0}
+.av:focus-visible{outline:3px solid var(--ink);border-radius:8px}
+.pl.turn .av{animation:bob 1s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-4px)}}
+
+/* ============ Game screen ============ */
+.lvl{display:inline-block;border:3px solid var(--ink);border-radius:99px;padding:2px 14px;font:700 13px 'Tajawal',sans-serif;color:var(--ink);margin-bottom:8px;box-shadow:3px 3px 0 var(--ink)}
+.count{color:var(--on-bg);font-weight:700;font-size:14px;margin-bottom:10px;min-height:20px}
+.stage{perspective:1000px}
+.card{position:relative;width:100%;height:300px;border:0;background:none;cursor:pointer;display:block;font:inherit;color:inherit}
+.card[disabled]{cursor:default}
+.card:focus-visible{outline:4px solid var(--yel);outline-offset:6px;border-radius:26px}
+.inner{position:absolute;inset:0;transition:transform .7s cubic-bezier(.3,1.2,.4,1);transform-style:preserve-3d}
+.card.flip .inner{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;border:4px solid var(--ink);border-radius:26px;box-shadow:7px 7px 0 var(--ink);backface-visibility:hidden;-webkit-backface-visibility:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:26px 22px}
+.front{background:var(--pink);background-image:repeating-linear-gradient(45deg,rgba(255,255,255,.2) 0 12px,transparent 12px 24px)}
+.front .big{font:400 96px 'Lalezar',sans-serif;color:#fff;-webkit-text-stroke:4px var(--ink);line-height:1}
+.front span.t{font:700 17px 'Tajawal',sans-serif;background:var(--paper);border:3px solid var(--ink);border-radius:12px;padding:4px 14px;margin-top:10px}
+.back{transform:rotateY(180deg);background:var(--card)}
+.tag{position:absolute;top:14px;inset-inline-start:16px;font:700 13px 'Tajawal',sans-serif;border:2px solid var(--ink);border-radius:99px;padding:2px 12px}
+.who{position:absolute;top:14px;inset-inline-end:16px;font:700 13px 'Tajawal',sans-serif}
+.q{font:400 26px/1.55 'Lalezar','Tajawal',sans-serif;white-space:pre-line}
+.tmw{margin-top:14px;color:var(--on-bg);font-weight:700;text-align:center;font-size:18px}
+.tmbar{height:12px;background:var(--bar-bg);border:3px solid var(--ink);border-radius:99px;overflow:hidden;margin-top:6px}
+.tmbar i{display:block;height:100%;width:100%;background:var(--yel);transition:width .25s linear}
+.ans{margin-top:18px;text-align:start}
+.ans label{display:block;color:var(--on-bg);font-weight:700;font-size:14px;margin-bottom:4px}
+#at{font:700 16px 'Tajawal',sans-serif;direction:inherit;height:84px;margin-top:0}
+#at[readonly]{background:#eceeff}
+.hint{color:var(--on-bg);font-weight:700;font-size:13px;margin-top:12px;line-height:1.7;min-height:22px}
+.rxbar{display:flex;gap:8px;justify-content:center;margin-top:16px}
+.rbt{font-size:26px;width:52px;height:52px;border:3px solid var(--ink);border-radius:16px;background:var(--paper);cursor:pointer;box-shadow:3px 3px 0 var(--ink);line-height:1}
+.rbt:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--ink)}
+.rbt:focus-visible{outline:3px solid var(--on-bg);outline-offset:2px}
+.fl{position:fixed;bottom:110px;font-size:40px;pointer-events:none;z-index:12;animation:flo 2.1s ease-out forwards}
+@keyframes flo{0%{transform:translateY(0) scale(.6);opacity:0}15%{opacity:1}100%{transform:translateY(-55vh) scale(1.3);opacity:0}}
+.bit{position:fixed;top:-30px;z-index:9;pointer-events:none;font-size:24px;animation:fall linear forwards}
+@keyframes fall{to{transform:translateY(112vh) rotate(360deg)}}
+
+/* ============ End screen ============ */
+.end{display:none;background:var(--card);border:4px solid var(--ink);border-radius:26px;box-shadow:7px 7px 0 var(--ink);padding:30px 20px}
+.end.on{display:block}
+.end h2{font:400 30px 'Lalezar','Tajawal',sans-serif}
+.end p{margin:10px 0 18px;font-weight:700;line-height:1.9}
+.awards{text-align:start;margin:6px 0 14px}
+.awards h3{font:400 20px 'Lalezar','Tajawal',sans-serif;text-align:center;margin-bottom:6px}
+.aw{font-weight:700;line-height:1.9;font-size:15px}
+.recap{max-height:260px;overflow:auto;text-align:start;margin:10px 0 16px}
+.rc{border-bottom:2px dashed #cfcfe8;padding:8px 2px;font-size:14px;line-height:1.7}
+.rc b{display:block}
+.rc span{color:#3b3b7a;font-weight:700}
+
+/* ============ Drawer / modals / toast ============ */
+.menubtn{position:fixed;top:calc(10px + env(safe-area-inset-top,0px));left:10px;z-index:20;font:700 14px 'Tajawal',sans-serif;background:var(--paper);color:var(--ink);border:3px solid var(--ink);border-radius:99px;padding:6px 14px;box-shadow:3px 3px 0 var(--ink);cursor:pointer}
+.menubtn:focus-visible,.dx:focus-visible{outline:3px solid var(--yel);outline-offset:2px}
+.scrim{position:fixed;inset:0;background:rgba(10,10,40,.55);z-index:30}
+.drawer{position:fixed;top:0;bottom:0;left:0;width:min(88vw,340px);background:var(--card);color:var(--ink);border-right:4px solid var(--ink);z-index:31;padding:calc(14px + env(safe-area-inset-top,0px)) 14px calc(20px + env(safe-area-inset-bottom,0px));overflow:auto;text-align:start;animation:drin .25s ease}
+@keyframes drin{from{transform:translateX(-100%)}}
+.dhead{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;font-size:18px}
+.dx{border:3px solid var(--ink);background:var(--paper);color:var(--ink);border-radius:12px;width:38px;height:38px;font-size:16px;cursor:pointer}
+#drawer .opts{justify-content:flex-start;margin-top:12px}
+#drawer #rst{margin-top:6px;width:100%}
+#drawer .hint2{color:var(--ink)}
+#ctlHome .hint2{color:var(--on-bg)}
+.intro{position:fixed;inset:0;background:rgba(10,10,40,.7);z-index:40;display:grid;place-items:center;padding:18px}
+.introc{position:relative;background:var(--card);color:var(--ink);border:4px solid var(--ink);border-radius:26px;box-shadow:7px 7px 0 var(--ink);padding:22px 20px;max-width:400px;max-height:88vh;overflow:auto;text-align:start}
+.introc h2{font:400 28px 'Lalezar','Tajawal',sans-serif;text-align:center;margin-bottom:10px}
+.introc h3{font:400 20px 'Lalezar','Tajawal',sans-serif;margin:14px 0 4px}
+.introc ol{margin:0 0 6px;padding-inline-start:22px;line-height:1.9;font-weight:700;font-size:14.5px}
+.ix{position:absolute;top:12px;inset-inline-end:12px;width:38px;height:38px;border:3px solid var(--ink);background:var(--paper);color:var(--ink);border-radius:12px;font-size:16px;cursor:pointer}
+.ix:focus-visible{outline:3px solid var(--pink);outline-offset:2px}
+.memoc{text-align:center}
+.memoc img{max-width:100%;max-height:60vh;border:3px solid var(--ink);border-radius:14px;margin:10px 0}
+.toast{position:fixed;bottom:calc(24px + env(safe-area-inset-bottom,0px));left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;border-radius:99px;padding:10px 18px;font-weight:700;font-size:14px;z-index:60;animation:toastin .25s ease;max-width:90vw;text-align:center}
+@keyframes toastin{from{opacity:0;transform:translate(-50%,10px)}}
+@media (prefers-reduced-motion:reduce){.pl.turn .av{animation:none}.bit{display:none}.inner{transition:none}}
+
+/* ============ Home screen layout (scoped to #home: the game and the drawer are untouched) ============ */
+#home .panel{margin-top:12px}
+#home .panel h3{font-size:17px;margin-bottom:8px}
+/* packs and intensity: tidy 3-column grids, everything visible at once */
+#home .chips{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+#home .chip{padding:8px 6px;text-align:center;font-size:15px}
+/* custom questions: quieter dashed row instead of a heavy card */
+#home .cqp{background:transparent;color:var(--on-bg);border:3px dashed var(--on-bg);box-shadow:none;margin:14px 0 0}
+#home .cqp .cql div,#home .cqp .cql button{color:var(--on-bg)}
+@supports (color:color-mix(in srgb,red,blue)){#home .cqp{border-color:color-mix(in srgb,var(--on-bg) 55%,transparent)}}
+/* start: full width and stays on screen at the bottom; it is the one loud element */
+#home .startrow{position:sticky;bottom:0;z-index:5;margin:18px -14px 6px;
+  padding:14px 14px calc(12px + env(safe-area-inset-bottom,0px));
+  background:linear-gradient(to top,var(--bg) 65%,transparent)}
+#home #start{width:100%;font-size:30px;padding:12px 20px}
+/* second choice: online play, full width and outlined by the paper style */
+#home #onl{width:100%}
+#home .lobby{margin-top:6px}
+/* home screen: no player-name bar (it appears once the game starts) */
+#players.idle{display:none}
+a.gm{text-decoration:none}
+#drawer #hubl{margin-bottom:6px}
+/* room for the always-visible settings button */
+main#app{padding-top:40px}
